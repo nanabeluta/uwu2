@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>飲食靈感卡 — 簡易示範</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>飲食靈感卡</h1>
+
+    <section class="card" id="recipeCard">
+      <div class="placeholder">按下「產生靈感」取得食譜</div>
+    </section>
+
+    <div class="controls">
+      <button id="randomBtn">產生靈感</button>
+      <button id="loadIngredientsBtn" disabled>載入食材</button>
+      <button id="saveListBtn" disabled>儲存購物清單</button>
+      <button id="toggleAddBtn">新增菜色</button>
+    </div>
+
+    <section id="ingredientsSection" class="ingredients hidden">
+      <h2>食材</h2>
+      <ul id="ingredientsList"></ul>
+    </section>
+
+    <section id="addRecipeSection" class="add-recipe hidden">
+      <h2>新增菜色</h2>
+      <form id="addRecipeForm">
+        <label>名稱<input type="text" id="newName" required></label>
+        <label>菜系<input type="text" id="newArea"></label>
+        <label>分類<input type="text" id="newCategory"></label>
+        <label>做法<textarea id="newInstructions" rows="4" required></textarea></label>
+        <label>食材（一行一項）<textarea id="newIngredients" rows="5" placeholder="例如：\n番茄 2 顆\n雞蛋 2 顆" required></textarea></label>
+        <div class="form-actions">
+          <button type="submit">新增</button>
+          <button type="button" id="cancelAddBtn">取消</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
