@@ -19,4 +19,13 @@ button[disabled]{opacity:.5;cursor:not-allowed}
 .form-actions button{background:#4a90e2}
 .add-recipe.hidden{display:none}
 
+.my-recipes{background:#fff;padding:16px;border-radius:10px;margin-top:16px;box-shadow:0 6px 18px rgba(17,24,39,0.06)}
+.my-recipes.hidden{display:none}
+.my-recipes ul{list-style:none;padding:0;margin:0}
+.my-recipes li{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f1f1f4}
+.my-recipes li:last-child{border-bottom:none}
+.recipe-actions{display:flex;gap:8px}
+.small-btn{background:#6c63ff;padding:8px 10px;border-radius:8px;font-size:13px}
+.small-btn.delete-btn{background:#e94f4f}
+
 @media (max-width:480px){.container{padding:0 12px}}
