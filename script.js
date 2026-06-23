@@ -1,5 +1,6 @@
 // 設定：若要儲存購物清單，請把 GAS_URL 換成你部署後的 Apps Script Web App URL
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbzUq9NKL-vMPatUUQDHrAfJz_t5lylC3S2dcxkSuHCwntZYupSOD_4tAaRvvh_yM_WpuA/exec';
+
 const RECIPES_API = 'recipes.json';
 
 const DEFAULT_RECIPES = [
@@ -163,10 +164,14 @@ saveListBtn.addEventListener('click', async () => {
   }
 
   try {
+    const formData = new URLSearchParams();
+    formData.append('recipe', payload.recipe);
+    formData.append('items', payload.items.join(', '));
+    formData.append('timestamp', payload.timestamp);
+
     const res = await fetch(GAS_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: formData
     });
     const text = await res.text();
     alert('已送出：' + text);

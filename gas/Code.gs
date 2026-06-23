@@ -8,9 +8,17 @@ function doOptions(e) {
 
 function doPost(e) {
   try {
-    const body = e.postData && e.postData.contents
-      ? JSON.parse(e.postData.contents)
-      : {};
+    let body = {};
+    if (e.postData && e.postData.type === 'application/json' && e.postData.contents) {
+      body = JSON.parse(e.postData.contents);
+    } else {
+      body = {
+        recipe: e.parameter.recipe || '',
+        items: e.parameter.items ? e.parameter.items.split(',').map(i => i.trim()) : [],
+        timestamp: e.parameter.timestamp || ''
+      };
+    }
+
     const ss = SpreadsheetApp.openById(SHEET_ID);
     const sheet = ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
     const row = [
