@@ -1,5 +1,5 @@
 // 設定：若要儲存購物清單，請把 GAS_URL 換成你部署後的 Apps Script Web App URL
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwmpT4kLNO10xcqzL4Yt6kmuofVsGrR9WR0W-Yb6k9_o2ykgY6kXc61Xckg_4tHWdI-qg/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzUq9NKL-vMPatUUQDHrAfJz_t5lylC3S2dcxkSuHCwntZYupSOD_4tAaRvvh_yM_WpuA/exec';
 const RECIPES_API = 'recipes.json';
 
 const DEFAULT_RECIPES = [
