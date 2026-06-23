@@ -153,6 +153,15 @@ saveListBtn.addEventListener('click', async () => {
     timestamp: new Date().toISOString()
   };
 
+  // 若 GAS_URL 為空或開發模式，儲存到本地 localStorage
+  if (!GAS_URL || GAS_URL.includes('localhost') || GAS_URL === '') {
+    let shoppingLists = JSON.parse(localStorage.getItem('shoppingLists') || '[]');
+    shoppingLists.push(payload);
+    localStorage.setItem('shoppingLists', JSON.stringify(shoppingLists));
+    alert('購物清單已儲存到本地！\n菜色：' + payload.recipe + '\n食材：' + payload.items.join('、'));
+    return;
+  }
+
   try {
     const res = await fetch(GAS_URL, {
       method: 'POST',
@@ -163,7 +172,11 @@ saveListBtn.addEventListener('click', async () => {
     alert('已送出：' + text);
   } catch (err) {
     console.error(err);
-    alert('送出失敗，請檢查 GAS_URL 是否為你部署的網址。');
+    // 若 GAS 送出失敗，改為本地儲存
+    let shoppingLists = JSON.parse(localStorage.getItem('shoppingLists') || '[]');
+    shoppingLists.push(payload);
+    localStorage.setItem('shoppingLists', JSON.stringify(shoppingLists));
+    alert('無法連接 GAS，已改為本地儲存。請檢查 GAS_URL 是否為你部署的網址。\n菜色：' + payload.recipe + '\n食材：' + payload.items.join('、'));
   }
 });
 
