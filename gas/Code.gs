@@ -1,6 +1,12 @@
 const SHEET_ID = '1vKppVTJ-4pRBE4Sj1gxvkaFvca4E5Dmf0sqnWGhl9fk';
 const SHEET_NAME = 'Sheet1';
 
+function doOptions(e) {
+  return ContentService.createTextOutput()
+    .setMimeType(ContentService.MimeType.TEXT)
+    .getHeaders()['Access-Control-Allow-Origin'] = '*';
+}
+
 function doPost(e) {
   try {
     const body = e.postData && e.postData.contents
