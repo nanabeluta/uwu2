@@ -3,8 +3,7 @@ const SHEET_NAME = 'Sheet1';
 
 function doOptions(e) {
   return ContentService.createTextOutput()
-    .setMimeType(ContentService.MimeType.TEXT)
-    .getHeaders()['Access-Control-Allow-Origin'] = '*';
+    .setMimeType(ContentService.MimeType.TEXT);
 }
 
 function doPost(e) {
